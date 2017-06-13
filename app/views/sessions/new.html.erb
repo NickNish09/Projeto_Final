@@ -1,3 +1,5 @@
+<h1>Login</h1>
+<br>
 <%= form_for :session, url: sign_in_path do |f| %>
     <div class="form-group">
       <%= f.label :email %><br />
@@ -11,5 +13,6 @@
     <div class="actions">
       <%= f.submit "Log in" ,class: "btn btn-primary"%>
     </div>
+  <br>
   <p>New user? <%= link_to "Sign up now!", new_user_path %></p>
   <% end %>
