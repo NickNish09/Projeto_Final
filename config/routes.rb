@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   get 'pages/home'
   get 'pages/perfil'
+  get 'pages/troll'
 
   get 'users/new'
   resources :users

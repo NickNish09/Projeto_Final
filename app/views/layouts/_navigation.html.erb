@@ -38,6 +38,7 @@
       </form>
       <ul class="nav navbar-nav navbar-right">
         <% if logged_in? %>
+          <li><%= link_to 'Opções',edit_user_path(current_user) %></li>
           <li><%= link_to 'Logout',sign_out_path,method: "delete" %></li>
           <li><%= link_to 'Perfil',pages_perfil_path %></li>
         <% else %>
