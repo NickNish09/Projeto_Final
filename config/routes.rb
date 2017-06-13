@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   get 'sessions/new'
 
   get 'pages/home'
+  get 'pages/perfil'
 
   get 'users/new'
   resources :users
