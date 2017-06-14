@@ -32,6 +32,10 @@ gem 'bcrypt'
 
 gem 'jquery-rails'
 
+gem 'cucumber', '~> 2.4'
+
+gem 'money-rails', '~> 1.8'
+
 gem 'acts_as_shopping_cart', '~> 0.4.1'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
