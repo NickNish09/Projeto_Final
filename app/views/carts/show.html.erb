@@ -1,3 +1,25 @@
 <h1>Carrinho</h1>
 
-<p>Produtos <%= @cart.shopping_cart_items %></p>
+
+<table class="table table-hover">
+     <thead >
+       <tr>
+         <th>Nome</th>
+         <th>Preço</th>
+         <th>Quantidade</th>
+       </tr>
+     </thead>
+     <tbody>
+       <% @carts.shopping_cart_items.each do |i| %>
+         <tr>
+           <td><% @product = Product.find(i.item_id) %>
+		<%= @product.name %></td>
+           <td>R$ <%= i.price %></td>
+           <td><%= i.quantity %></td>
+         </tr>
+      <%end%>
+    </tbody>
+</table>
+
+<p>Total</p>
+R$ <%= @carts.total %>
