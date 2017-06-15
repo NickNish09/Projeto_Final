@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   get 'products/index'
   get 'products/condimentos'
   get 'products/cafedamanha'
+  get 'products/addtocart'
+  get 'carts/addtocart'
   resources :carts,only: [:show]
   get 'users/new'
   resources :users

@@ -11,7 +11,7 @@
          <tr>
            <td><%= product.name %></td>
            <td>R$ <%= product.price %></td>
-           <td><%=button_to 'Adicionar ao Carrinho',"",class: "btn btn-success" %></td>
+           <td><%=link_to 'Adicionar ao Carrinhos',{:controller => "carts", :action => "addtocart",:product => product.id},class: "btn btn-success" %></td>
            
          </tr>
       <%end%>
