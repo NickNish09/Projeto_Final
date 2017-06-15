@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 Product.delete_all
-Product.create! id: 1, name: "Pao", description: "Feito de Trigo", price: 0.20
-Product.create! id: 2, name: "Manteiga", description: "Salgada", price: 0.30
-Product.create! id: 3, name: "Sal", description: "Com iodo", price: 0.40
-Product.create! id: 4, name: "Açucar", description: "Refinado", price: 1.40
+Product.create! id: 1, name: "Pao", description: "Feito de Trigo", price: 0.20, categories: "cafedamanha"
+Product.create! id: 2, name: "Manteiga", description: "Salgada", price: 0.30, categories: "cafedamanha"
+Product.create! id: 3, name: "Sal", description: "Com iodo", price: 0.40, categories: "condimentos"
+Product.create! id: 4, name: "Açucar", description: "Refinado", price: 1.40, categories: "condimentos"

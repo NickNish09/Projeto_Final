@@ -4,7 +4,10 @@ Rails.application.routes.draw do
   get 'pages/home'
   get 'pages/perfil'
   get 'pages/troll'
-
+  get 'products/index'
+  get 'products/condimentos'
+  get 'products/cafedamanha'
+  resources :cart
   get 'users/new'
   resources :users
 
