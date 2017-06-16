@@ -5,6 +5,8 @@ class ProductsController < ApplicationController
 	def index
 		@products = Product.all
 		@carts = Cart.find(5)
+
+		redirect_to products_search_path
 	end
 
 	def condimentos
@@ -16,5 +18,23 @@ class ProductsController < ApplicationController
 		@carts = Cart.find(5)
 	end
 	
+	def get
+	end
+	#def search
+    #	@query = Product.search do
+    #   fulltext params[:searchh]
+    #	end
+    #	@products = @query.results
+    #
+    #	redirect_to products_search_path
+	#end
 
+	def search
+		@products = Product.all
+		  if params[:search]
+		    @products = Product.search(params[:search]).order("created_at DESC")
+		  else
+		    @products = Product.all.order('created_at DESC')
+		  end
+	end
 end

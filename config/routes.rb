@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   get 'products/condimentos'
   get 'products/cafedamanha'
   get 'products/addtocart'
+  get 'products/search'
+  resources :products
   get 'carts/limpar'
   get 'carts/addtocart'
   get 'carts/aumentarqtd'
