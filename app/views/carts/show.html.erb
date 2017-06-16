@@ -7,6 +7,7 @@
          <th>Nome</th>
          <th>Preço</th>
          <th>Quantidade</th>
+         <th>Acrescentar/Diminuir Quantidades</th>
        </tr>
      </thead>
      <tbody>
@@ -16,6 +17,8 @@
 		<%= @product.name %></td>
            <td>R$ <%= i.price %></td>
            <td><%= i.quantity %></td>
+           <td><%= link_to '-' ,{:controller => 'carts',:action => 'diminuirqtd',:id => @carts.id,:product => @product.id},class: "btn btn-primary" %>
+           <%= link_to '+' ,{:controller => 'carts',:action => 'aumentarqtd',:id => @carts.id,:product => @product.id},class: "btn btn-primary" %></td>
          </tr>
       <%end%>
     </tbody>
@@ -23,3 +26,5 @@
 
 <p>Total</p>
 R$ <%= @carts.total %>
+<br><br>
+<%= link_to 'Esvaziar Carrinho' ,{:controller => 'carts',:action => :limpar,:id => @carts.id},class: "btn btn-primary"%>

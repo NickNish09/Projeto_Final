@@ -8,7 +8,11 @@ Rails.application.routes.draw do
   get 'products/condimentos'
   get 'products/cafedamanha'
   get 'products/addtocart'
+  get 'carts/limpar'
   get 'carts/addtocart'
+  get 'carts/aumentarqtd'
+  get 'carts/diminuirqtd'
+  post 'carts/:id' => 'carts#show'
   resources :carts,only: [:show]
   get 'users/new'
   resources :users
