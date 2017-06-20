@@ -4,7 +4,7 @@
        <tr>
          <th>Nome</th>
          <th>Preço</th>
-         <th>Quantidade</th>
+         <th>Descrição</th>
        </tr>
      </thead>
      <tbody>
@@ -12,8 +12,8 @@
          <tr>
            <td><%= product.name %></td>
            <td>R$ <%= product.price %></td>
-            <td><%= number_field_tag 'quantity','1',min: 1,class: "center",min: 1%></td>
-           <td><%=link_to 'Adicionar ao Carrinho',{:controller => "carts", :action => "addtocart",:product => product.id,:quantity => 1},class: "btn btn-primary" %></td>
+            <td><%= product.description %></td>
+           <td><%=link_to 'Adicionar ao Carrinho',{:controller => "carts", :action => "addtocart",:product => product.id,:cart => current_cart,:quantity => 1},class: "btn btn-primary" %></td>
          </tr>
       <%end%>
     </tbody>

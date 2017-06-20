@@ -9,12 +9,16 @@ Rails.application.routes.draw do
   get 'products/cafedamanha'
   get 'products/addtocart'
   get 'products/search'
+  get 'carrinho/show' => 'carrinho#show'
   resources :products
+  resources :orders
+  get 'orders/criar'
+  
   get 'carts/limpar'
   get 'carts/addtocart'
   get 'carts/aumentarqtd'
   get 'carts/diminuirqtd'
-  post 'carts/:id' => 'carts#show'
+  post 'carts/show' => 'carts#show'
   resources :carts,only: [:show]
   get 'users/new'
   resources :users

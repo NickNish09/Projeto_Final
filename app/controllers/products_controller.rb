@@ -4,32 +4,25 @@ class ProductsController < ApplicationController
 	end
 	def index
 		@products = Product.all
-		@carts = Cart.find(5)
-
-		redirect_to products_search_path
+		#@carts = Cart.find(5)
 	end
 
 	def condimentos
 		@products = Product.where(:categories => 'condimentos')
-		@carts = Cart.find(5)
+		#@carts = Cart.find(5)
 	end
 	def cafedamanha
 		@products = Product.where(:categories => 'cafedamanha')
-		@carts = Cart.find(5)
+		#@carts = Cart.find(5)
 	end
 	
 	def get
+		#redirect_to products_search_path
 	end
-	#def search
-    #	@query = Product.search do
-    #   fulltext params[:searchh]
-    #	end
-    #	@products = @query.results
-    #
-    #	redirect_to products_search_path
-	#end
+	
 
 	def search
+		
 		@products = Product.all
 		  if params[:search]
 		    @products = Product.search(params[:search]).order("created_at DESC")

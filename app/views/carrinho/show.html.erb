@@ -1,0 +1,36 @@
+<h1>Carrinho</h1>
+
+
+<table class="table table-hover">
+     <thead >
+       <tr>
+         <th>Nome</th>
+         <th>Preço</th>
+         <th>Quantidade</th>
+         <th>Acrescentar/Diminuir Quantidades</th>
+       </tr>
+     </thead>
+     <tbody>
+       <% @carts.shopping_cart_items.each do |i| %>
+         <tr>
+           <td><% @product = Product.find(i.item_id) %>
+    <%= @product.name %></td>
+           <td>R$ <%= i.price %></td>
+           <td><%= i.quantity %></td>
+           <td><%= link_to '-' ,{:controller => 'carts',:action => 'diminuirqtd',:id => @carts.id,:product => @product.id},class: "btn btn-primary" %>
+           <%= link_to '+' ,{:controller => 'carts',:action => 'aumentarqtd',:id => @carts.id,:product => @product.id},class: "btn btn-primary" %></td>
+         </tr>
+      <%end%>
+    </tbody>
+</table>
+
+<p>Total</p>
+R$ <%= @carts.total %>
+<br><br>
+<%= link_to 'Esvaziar Carrinho' ,{:controller => 'carts',:action => :limpar,:id => @carts.id},class: "btn btn-primary"%>
+<% if logged_in? %>
+<% @user = User.find(current_user) %>
+
+<%= link_to 'Finalizar Pedido' ,{:controller => 'orders',:action => :criar,:id => @user.id,:owner_id => @user.id},class: "btn btn-primary"%>
+
+<% end %>

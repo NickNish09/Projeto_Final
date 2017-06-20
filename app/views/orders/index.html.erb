@@ -1,20 +1,20 @@
-
-
-<h1>Carrinho</h1>
-
-
+<h1>Pedidos Realizados</h1>
 <table class="table table-hover">
      <thead >
        <tr>
          <th>Nome</th>
          <th>Preço</th>
          <th>Quantidade</th>
-         <th>Acrescentar/Diminuir Quantidades</th>
        </tr>
      </thead>
      <tbody>
-       
+       <% @orders.each do |i| %>
+         <tr>
+           <td><%= i.id %></td>
+           <td><%= i.owner_id %></td>
+           <td></td>
+         </tr>
+      <% end %>
     </tbody>
 </table>
 
-<%= current_cart %>
