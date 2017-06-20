@@ -2,16 +2,43 @@ class CartsController < ApplicationController
 	
 
 	def addtocart
-		cart = current_cart
+		#cart = current_cart
 		@products = Product.find(params[:product])
-		cart << {product_id: @products.id,quantity: 1,price: @products.price}
+		if (!current_cart.empty? && current_cart.any?{|h| h["product_id"] == @products.id})
+			flash[:danger] = "Produto já consta no carrinho"
+		else
+			current_cart << {product_id: @products.id,quantity: 1,price: @products.price}
+			flash[:success] = "Produto adicionado"
+		end
 		redirect_to :back
 	end
-	def remove(product,cart)
-		cart.delete(product)
+	def remove
+		@products = Product.find(params[:product])
+		current_cart.delete_if{|h| h["product_id"] == @products.id}
+
+		redirect_to carts_show_path
+	end
+
+	def rise
+		@product = Product.find(params[:product])
+		current_cart.map do |h|
+		 	if h["product_id"] == @product.id
+		 		h["quantity"] += 1
+		 	end
+		end
+		redirect_to carts_show_path
+	end
+		
+
+	def destroy
+		current_cart.clear
+		redirect_to carts_show_path
 	end
 
 	def show
-		@product = Product.find(1)
+		@products = []
+		if (!current_cart.empty?)
+			current_cart.each{|h| @products << Product.find(h["product_id"])}
+		end
 	end
 end

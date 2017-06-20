@@ -18,6 +18,10 @@ Rails.application.routes.draw do
   get 'carts/addtocart'
   get 'carts/aumentarqtd'
   get 'carts/diminuirqtd'
+  get 'carts/destroy'
+  post 'carts/destroy'
+  get 'carts/remove'
+  get 'carts/rise'
   post 'carts/show' => 'carts#show'
   resources :carts,only: [:show]
   get 'users/new'
