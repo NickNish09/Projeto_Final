@@ -15,11 +15,11 @@
      <tbody>
        <% @products.each do |i| %>
          <tr>
-           <td>  <%= i.name %></td>
-           <td>R$ <%= i.price %></td>
-           <td>
-           <%= link_to '+' ,{:controller => "carts",:action => "rise", :product => i.id},class: "btn btn-primary" %></td>
-           <td><%=link_to 'Remover',{:controller => "carts", :action => "remove",:product => i.id},class: "btn btn-primary" %></td>
+           <td>  <%= i[:name] %></td>
+           <td>R$ <%= i[:price] %></td>
+           <td><%= i[:quantity] %>
+           <%= link_to '+' ,{:controller => "carts",:action => "rise", :product => i[:id]},class: "btn btn-primary" %></td>
+           <td><%=link_to 'Remover',{:controller => "carts", :action => "remove",:product => i[:id]},class: "btn btn-primary" %></td>
          </tr>
       <%end%>
     </tbody>
@@ -27,5 +27,3 @@
 
 <%=link_to 'Esvaziar Carrinho',{:controller => "carts", :action => "destroy"},class: "btn btn-primary" %>
 <br>
-
-<%= current_cart %>

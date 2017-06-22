@@ -38,7 +38,12 @@ class CartsController < ApplicationController
 	def show
 		@products = []
 		if (!current_cart.empty?)
-			current_cart.each{|h| @products << Product.find(h["product_id"])}
+			current_cart.each do |h|
+				pr = Product.find(h["product_id"])
+				@products << {:id => pr.id,:name => pr.name,:description => pr.description,:price => pr.price,:quantity => h["quantity"]}
+				#@products << h["product_id"]
+			end
 		end
+		@cart = current_cart
 	end
 end
