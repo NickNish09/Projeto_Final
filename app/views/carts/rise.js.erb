@@ -1,17 +1,10 @@
 console.log("pudim");
-$('#btnPlus').on('click',function (){
-	alert("Oi");
-	console.log("pudim22");
-	idd = this.id;
-	$.ajax({
-		url: <%= carts_rise_path %>,
-		type: "GET",
-		data: {product: idd}
-		success: function(){
-
-		}
-
-	});
-
+var id = <%= params[:product] %>;
+var quantidade = <%= params[:qtd] %>;
+$("#btnPlus"+id).on("click",function(){
+	quantidade += 1;
+	console.log("ola");
+	$('#fieldQt'+id).val(quantidade);
 });
+
 	

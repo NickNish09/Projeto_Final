@@ -16,9 +16,8 @@
            <td>  <%= i[:name] %></td>
            <td>R$ <%= i[:price] %></td>
            <td>
-              <%= link_to 'Adicionar',carts_rise_path(:product => i[:id]),remote: true,id: 'btnPlus',class: "btn btn-primary" %>
-
-              <input type="text" class="fieldQty" value="<%= i[:quantity]%>" style="text-align: center" size="2" readonly/>
+              <%= button_to 'Adicionar',carts_rise_path(:product  => i[:id],qtd: i[:quantity]),remote: true,id: 'btnPlus'+i[:id].to_s,class: "btn btn-primary" %>
+              <input type="text" id="fieldQt<%= i[:id]%>" class="fieldQty" value="<%= i[:quantity]%>" style="text-align: center" size="2" readonly/>
             </td>
            <td><%= i[:quantity] %>
            <%= link_to '+' ,{:controller => "carts",:action => "rise", :product => i[:id]},class: "btn btn-primary" %></td>

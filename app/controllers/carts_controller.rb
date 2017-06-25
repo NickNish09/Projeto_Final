@@ -21,16 +21,15 @@ class CartsController < ApplicationController
 
 	def rise
 		@product = Product.find(params[:product])
-		respond_to do |format|
-			format.html{ redirect_to carts_show_path}
-			format.json {render json: current_cart}
-			format.js
-		end
-		
 		current_cart.map do |h|
 		 	if h["product_id"] == @product.id
 		 		h["quantity"] += 1
 		 	end
+		end
+		respond_to do |format|
+			format.html{ redirect_to carts_show_path}
+			
+			format.js
 		end
 		#redirect_to carts_show_path
 		
