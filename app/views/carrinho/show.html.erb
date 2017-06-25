@@ -17,7 +17,7 @@
     <%= @product.name %></td>
            <td>R$ <%= i.price %></td>
            <td><%= i.quantity %></td>
-           <td><%= link_to '-' ,{:controller => 'carts',:action => 'diminuirqtd',:id => @carts.id,:product => @product.id},class: "btn btn-primary" %>
+           <td><%= link_to '-' ,carts_diminuirqtd_path,params: {:id => @carts.id,:product => @product.id},class: "btn btn-primary" %>
            <%= link_to '+' ,{:controller => 'carts',:action => 'aumentarqtd',:id => @carts.id,:product => @product.id},class: "btn btn-primary" %></td>
          </tr>
       <%end%>

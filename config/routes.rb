@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   post 'carts/destroy'
   get 'carts/remove'
   get 'carts/rise'
+  post 'carts/rise'
   post 'carts/show' => 'carts#show'
   resources :carts,only: [:show]
   get 'users/new'
