@@ -1,10 +1,13 @@
 console.log("pudim");
 var id = <%= params[:product] %>;
 var quantidade = <%= params[:qtd] %>;
+var preco = <%= params[:prc] %>
+
 $("#btnPlus"+id).on("click",function(){
 	quantidade += 1;
 	console.log("ola");
 	$('#fieldQt'+id).val(quantidade);
+	$('#priceQty'+id).val(quantidade*preco);
 });
 
 	
