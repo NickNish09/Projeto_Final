@@ -34,7 +34,21 @@ class CartsController < ApplicationController
 		#redirect_to carts_show_path
 		
 	end
+	def low
+		@product = Product.find(params[:product])
+		current_cart.map do |h|
+		 	if h["product_id"] == @product.id
+		 		h["quantity"] -= 1
+		 	end
+		end
+		respond_to do |format|
+			format.html{ redirect_to carts_show_path}
+			
+			format.js
+		end
+		#redirect_to carts_show_path
 		
+	end
 
 	def destroy
 		current_cart.clear

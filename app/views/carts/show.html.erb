@@ -11,16 +11,16 @@
        </tr>
      </thead>
      <tbody>
-       <% @products.each do |i| %>
+       <% @products.each_with_index do |i,idx| %>
          <tr>
            <td>  <%= i[:name] %></td>
            <td>R$<input type="text" id="priceQty<%= i[:id]%>" class="fieldQty" value="<%= i[:quantity] * i[:price]%>" style="text-align: center" size="2" readonly/>
             </td>
            <td>
-              <%= button_to 'Adicionar',carts_rise_path(:product  => i[:id],qtd: i[:quantity],prc: i[:price]),remote: true,id: 'btnPlus'+i[:id].to_s,class: "btn btn-primary" %>
-              <input type="text" id="fieldQt<%= i[:id]%>" class="fieldQty" value="<%= i[:quantity]%>" style="text-align: center" size="2" readonly/>
+               <input type="text" id="fieldQt<%= i[:id]%>" class="fieldQty" value="<%= i[:quantity]%>" style="text-align: center" size="2" readonly/>
+               <%= button_to '-',carts_low_path(:product  => i[:id],qtd: i[:quantity],prc: i[:price],posicao: idx),remote: true,id: 'btnMinus'+i[:id].to_s,class: "btn btn-primary" %>
+               <%= button_to '+',carts_rise_path(:product  => i[:id],qtd: i[:quantity],prc: i[:price],posicao: idx),remote: true,id: 'btnPlus'+i[:id].to_s,class: "btn btn-primary" %>
             </td>
-           
            <td><%=link_to 'Remover',{:controller => "carts", :action => "remove",:product => i[:id]},class: "btn btn-primary" %></td>
          </tr>
       <%end%>
