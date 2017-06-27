@@ -7,7 +7,7 @@
          <th>Nome</th>
          <th>Preço</th>
          <th>Quantidade</th>
-         <th>Remover</th>
+         <th>Alterar</th>
        </tr>
      </thead>
      <tbody>
@@ -18,17 +18,24 @@
             </td>
            <td>
                <input type="text" id="fieldQt<%= i[:id]%>" class="fieldQty" value="<%= i[:quantity]%>" style="text-align: center" size="2" readonly/>
-               <%= button_to '-',carts_low_path(:product  => i[:id],qtd: i[:quantity],prc: i[:price],posicao: idx),remote: true,id: 'btnMinus'+i[:id].to_s,class: "btn btn-primary" %>
-               <%= button_to '+',carts_rise_path(:product  => i[:id],qtd: i[:quantity],prc: i[:price],posicao: idx),remote: true,id: 'btnPlus'+i[:id].to_s,class: "btn btn-primary" %>
             </td>
-           <td><%=link_to 'Remover',{:controller => "carts", :action => "remove",:product => i[:id]},class: "btn btn-primary" %></td>
+            <td>
+               <%= link_to '<i class="glyphicon glyphicon-minus"></i>'.html_safe,carts_low_path(:product  => i[:id],qtd: i[:quantity],prc: i[:price],posicao: idx),remote: true,id: 'btnMinus'+i[:id].to_s,class: "btn btn-danger" %>
+               <%= link_to '<i class="glyphicon glyphicon-plus"></i>'.html_safe,carts_rise_path(:product  => i[:id],qtd: i[:quantity],prc: i[:price],posicao: idx),remote: true,id: 'btnPlus'+i[:id].to_s,class: "btn btn-success" %>
+            </td>
+           <td><%=link_to '<i class="glyphicon glyphicon-trash"></i>'.html_safe,{:controller => "carts", :action => "remove",:product => i[:id]},class: "btn btn-primary" %></td>
            
          </tr>
       <%end%>
     </tbody>
 </table>
+<%= @total %>
 
-<p>Total: R$<input type="text" id="total" class="fieldQty" value="<%= @total %>" style="text-align: center" size="2" readonly/></p>
+<p>Total: R$<input type="text" size="6" id="total" class="fieldQty" value="<%= @total %>" style="text-align: center" size="2" readonly/></p>
 <%=link_to 'Esvaziar Carrinho',{:controller => "carts", :action => "destroy"},class: "btn btn-primary" %>
 <%=link_to 'Finalizar Compra','#',class: "btn btn-primary" %>
 <br>
+
+
+<%= current_cart[0]["quantity"] %>
+<%= current_cart[1]["quantity"] %>

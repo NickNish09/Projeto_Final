@@ -6,8 +6,9 @@ $(document).ready(function(){
 	var tot = parseFloat($('#total').val());
 	tot -= preco;
 	quantidade -= 1;
+	tot = tot.toFixed(2);
 	console.log("ola");
 	$('#fieldQt'+id).val(quantidade);
-	$('#priceQty'+id).val(quantidade*preco);
+	$('#priceQty'+id).val((quantidade*preco).toFixed(2));
 	$('#total').val(tot);
 });
