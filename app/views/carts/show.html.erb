@@ -32,5 +32,5 @@
 
 <p>Total: R$<input type="text" size="6" id="total" class="fieldQty" value="<%= @total %>" style="text-align: center" size="2" readonly/></p>
 <%=link_to 'Esvaziar Carrinho',{:controller => "carts", :action => "destroy"},class: "btn btn-primary" %>
-<%=link_to 'Finalizar Compra',orders_path(owner_id: current_user.id,total: @total,status: 0,date: Date.today),method: "POST",class: "btn btn-primary" %>
+<%=link_to 'Finalizar Compra',orders_path(owner_id: current_user.id,status: 0,date: Date.today),method: "POST",class: "btn btn-primary" %>
 <br>

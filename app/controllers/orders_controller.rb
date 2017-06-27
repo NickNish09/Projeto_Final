@@ -14,8 +14,15 @@ class OrdersController < ApplicationController
 
 	def create #criar um pedido novo
 		@orders = Order.new
+
+		@total = 0
+		current_cart.each do |h|
+			@total += h["quantity"]*h["price"]
+		end
+		@total
+
 		@orders.owner_id = (params[:owner_id])
-		@orders.total = (params[:total])
+		@orders.total = @total
 		@orders.status = (params[:status])
 		@orders.deliverydate = (params[:date])
 		if @orders.save
