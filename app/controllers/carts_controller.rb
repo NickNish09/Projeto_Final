@@ -65,5 +65,10 @@ class CartsController < ApplicationController
 			end
 		end
 		@cart = current_cart
+		@total = 0
+		current_cart.each do |h|
+			@total += h["quantity"]*h["price"]
+		end
+		@total
 	end
 end

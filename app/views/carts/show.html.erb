@@ -22,12 +22,16 @@
                <%= button_to '+',carts_rise_path(:product  => i[:id],qtd: i[:quantity],prc: i[:price],posicao: idx),remote: true,id: 'btnPlus'+i[:id].to_s,class: "btn btn-primary" %>
             </td>
            <td><%=link_to 'Remover',{:controller => "carts", :action => "remove",:product => i[:id]},class: "btn btn-primary" %></td>
+           
          </tr>
       <%end%>
     </tbody>
 </table>
+<%= @total %>
 
+<p>Total: R$<input type="text" id="total" class="fieldQty" value="<%= @total %>" style="text-align: center" size="2" readonly/></p>
 <%=link_to 'Esvaziar Carrinho',{:controller => "carts", :action => "destroy"},class: "btn btn-primary" %>
+<%=link_to 'Finalizar Compra','#',class: "btn btn-primary" %>
 <br>
 
 
