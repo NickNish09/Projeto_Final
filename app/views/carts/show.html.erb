@@ -29,13 +29,8 @@
       <%end%>
     </tbody>
 </table>
-<%= @total %>
 
 <p>Total: R$<input type="text" size="6" id="total" class="fieldQty" value="<%= @total %>" style="text-align: center" size="2" readonly/></p>
 <%=link_to 'Esvaziar Carrinho',{:controller => "carts", :action => "destroy"},class: "btn btn-primary" %>
 <%=link_to 'Finalizar Compra','#',class: "btn btn-primary" %>
 <br>
-
-
-<%= current_cart[0]["quantity"] %>
-<%= current_cart[1]["quantity"] %>
