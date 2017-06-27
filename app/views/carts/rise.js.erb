@@ -1,14 +1,15 @@
-console.log("pudim");
-var id = <%= params[:product] %>;
-//var quantidade = <%= params[:qtd] %>;
-var quantidade = parseInt($('#fieldQt'+id).val());
-var preco = <%= params[:prc] %>;
-//var quantidade = $('#fieldQt'+id).val();
 $(document).ready(function(){
-	$("#btnPlus"+id).on("click",function(){
+	console.log("pudim");
+	var id = <%= params[:product] %>;
+	//var quantidade = <%= params[:qtd] %>;
+	var quantidade = parseInt($('#fieldQt'+id).val());
+	var preco = <%= params[:prc] %>;
+	//var quantidade = $('#fieldQt'+id).val();
+	//$("#btnPlus"+id).on("click",function(){
+		console.log("pudim2");
 		quantidade += 1;
 		$('#fieldQt'+id).val(quantidade);
 		$('#priceQty'+id).val(quantidade*preco);
 		
-	});
+	//});
 });
