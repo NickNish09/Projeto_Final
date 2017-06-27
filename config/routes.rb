@@ -12,7 +12,6 @@ Rails.application.routes.draw do
   get 'carrinho/show' => 'carrinho#show'
   resources :products
   resources :orders
-  get 'orders/criar'
   
   get 'carts/limpar'
   get 'carts/addtocart'

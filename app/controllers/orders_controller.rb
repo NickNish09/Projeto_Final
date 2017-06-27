@@ -6,19 +6,21 @@ class OrdersController < ApplicationController
 
 	def show
 		@orders = Order.where(:owner_id => params[:id])
-		#@user = User.find(params[:id])
 		@user = User.find(current_user)
 	end
 	def new
 		@orders = Order.new
 	end
 
-	def criar #criar um pedido novo
+	def create #criar um pedido novo
 		@orders = Order.new
 		@orders.owner_id = (params[:owner_id])
+		@orders.total = (params[:total])
+		@orders.status = (params[:status])
+		@orders.deliverydate = (params[:date])
 		if @orders.save
-  		redirect_to @orders, notice: "Pedido Realizado!"
-  		#sign_in(@user)
+			flash[:success] = "Pedido Realizado!"
+	  		redirect_to order_path(current_user.id)
   		else
   		
   		end
