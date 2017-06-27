@@ -3,11 +3,12 @@ $(document).ready(function(){
 	var id = <%= params[:product] %>;
 	var quantidade = parseInt($('#fieldQt'+id).val());
 	var preco = <%= params[:prc] %>;
-	var tot = parseInt($('#total').val());
+	var tot = parseFloat($('#total').val());
 	quantidade += 1;
+	tot += preco;
 	$('#fieldQt'+id).val(quantidade);
 	$('#priceQty'+id).val(quantidade*preco);
-	//$('#total').val(total);
+	$('#total').val(tot);
 		
 
 });
