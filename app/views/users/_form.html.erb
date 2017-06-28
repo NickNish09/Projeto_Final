@@ -31,6 +31,10 @@
                           <%= f.label :password_confirmation %>
                           <%= f.password_field :password_confirmation,class: "form-control",placeholder: "Password" %>
               </div>
+              <div class="form-group">
+                          <%= f.label :address %>
+                          <%= f.text_field :address,class: "form-control",placeholder: "Endereço" %>
+              </div>
               <div class="actions">
                           <%= f.submit "Enviar",class: "btn btn-primary"%>
               </div>
