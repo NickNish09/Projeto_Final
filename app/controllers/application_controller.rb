@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   before_action :current_cart
 
   include SessionsHelper
-  include CartsHelper
+  #include CartsHelper
 
   def current_cart
         session[:cart] ||= []

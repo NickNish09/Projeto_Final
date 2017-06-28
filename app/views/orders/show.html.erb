@@ -16,7 +16,7 @@
 				<td><%= x.deliverydate %></td>
 				<td>R$ <%= x.total %></td>
 				<td><%= x.status %></td>
-				<td>Detalhes</td>
+				<td><%= link_to '<i class="glyphicon glyphicon-new-window"></i>'.html_safe,'/orders/details/'+ x.id.to_s, class: "btn btn-primary" %></td>
 			</tr>     	
      	<% end %>
      </tbody>

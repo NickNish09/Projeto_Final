@@ -10,9 +10,10 @@ Rails.application.routes.draw do
   get 'products/addtocart'
   get 'products/search'
   get 'carrinho/show' => 'carrinho#show'
+  
   resources :products
   resources :orders
-  
+  get 'orders/details/:id' => 'orders#detail'
   get 'carts/limpar'
   get 'carts/addtocart'
   get 'carts/aumentarqtd'

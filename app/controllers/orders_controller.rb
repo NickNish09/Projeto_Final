@@ -1,6 +1,5 @@
 class OrdersController < ApplicationController
 	def index
-		#@orders = Order.find(params[:owner_id]) #todos os pedidos desse usuario
 		@orders = Order.all
 	end
 
@@ -14,7 +13,7 @@ class OrdersController < ApplicationController
 
 	def create #criar um pedido novo
 		@orders = Order.new
-
+		current_cart
 		@total = 0
 		current_cart.each do |h|
 			@total += h["quantity"]*h["price"]
@@ -32,6 +31,16 @@ class OrdersController < ApplicationController
   		else
   		
   		end
+	end
+
+	def detail
+		@order = Order.find(params[:id])
+		@products = []
+		@order.items.each do |h|
+			pr = Product.find(h["product_id"])
+			@products << pr.name
+		end
+		@products
 	end
 
 
