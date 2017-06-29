@@ -14,8 +14,14 @@
 			<tr>
 				<td><%= x.id %></td>
 				<td><%= x.deliverydate %></td>
-				<td>R$ <%= x.total %></td>
-				<td><%= x.status %></td>
+				<td>R$ <%= '%.2f'%(x.total) %></td>
+				<td><% if x.status == 0 %>
+					<input type="text" class="btn btn-warning disabled" value="Em Processamento" style="text-align: center" readonly/>
+					<% else if x.status == 1 %>
+					<input type="text" class="btn btn-success disabled" value="Entregue!" style="text-align: center" readonly/>
+					<% end %>
+					<% end %>
+				</td>
 				<td><%= link_to '<i class="glyphicon glyphicon-new-window"></i>'.html_safe,'/orders/details/'+ x.id.to_s, class: "btn btn-primary" %></td>
 			</tr>     	
      	<% end %>

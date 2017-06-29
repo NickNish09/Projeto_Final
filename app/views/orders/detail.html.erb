@@ -24,3 +24,7 @@
 		<% end %>
     </tbody>
 </table>
+
+<p>Total: R$ <%= '%.2f'%(@order.total) %></p>
+
+<%= link_to 'Voltar',order_path(current_user) ,class: "btn btn-primary" %>

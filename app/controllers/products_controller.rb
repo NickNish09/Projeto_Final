@@ -1,4 +1,6 @@
 class ProductsController < ApplicationController
+	#before_action :search_page,only: [:search]
+
 	def show
 
 	end
@@ -30,4 +32,10 @@ class ProductsController < ApplicationController
 		    @products = Product.all.order('created_at DESC')
 		  end
 	end
+	
+	private
+		def search_page
+			redirect_to products_search_path
+		end
+
 end
