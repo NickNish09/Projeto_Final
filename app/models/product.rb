@@ -1,5 +1,6 @@
 class Product < ApplicationRecord
-	#has_and_belongs_to_many :categories
+	has_many :protegories
+	has_many :categories, through: :protegories
 	#searchable do
     #	text :name, :description
 	#end

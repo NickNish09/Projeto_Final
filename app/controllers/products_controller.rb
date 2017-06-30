@@ -10,12 +10,12 @@ class ProductsController < ApplicationController
 	end
 
 	def condimentos
-		@products = Product.where(:categories => 'condimentos')
-		
+		#@products = Product.where(:categories => 'condimentos')
+		@products = Product.joins(:categories).where(:categories => {:id => 2})
 	end
 	def cafedamanha
-		@products = Product.where(:categories => 'cafedamanha')
-		
+		#@products = Product.where(:categories => 'cafedamanha')
+		@products = Product.joins(:categories).where(:categories => {:id => 1})
 	end
 	
 	def get
