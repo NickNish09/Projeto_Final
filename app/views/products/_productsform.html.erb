@@ -1,4 +1,15 @@
-
+<div class="dropdown">
+  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+    Categorias
+    <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+    <% categories.each do |cat| %>
+        <li><%= link_to cat.name.capitalize,products_findcategory_path(categoryname: cat.name) %></li>
+    <% end %>
+  </ul>
+</div>
+<br>
 <table class="table table-hover">
      <thead >
        <tr>
@@ -13,10 +24,10 @@
            <td><%= product.name %></td>
            <td>R$ <%= '%.2f'%(product.price) %></td>
             <td><%= product.description %></td>
-           <td><% if !current_user.admin? %>
-                <%=link_to 'Adicionar ao Carrinho',{:controller => "carts", :action => "addtocart",:product => product.id,:cart => current_cart,:quantity => 1},class: "btn btn-primary" %>
-                <% else %>
+           <td><% if logged_in? && current_user.admin? %>
                 <%= link_to 'Editar Produto',edit_product_path(product.id),class: "btn btn-primary" %>
+                <% else %>
+                <%= link_to 'Adicionar ao Carrinho',{:controller => "carts", :action => "addtocart",:product => product.id,:cart => current_cart,:quantity => 1},class: "btn btn-primary" %>
                 <% end %>
                 </td>
          </tr>
