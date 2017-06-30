@@ -8,20 +8,51 @@ class ProductsController < ApplicationController
 		@products = Product.all
 		
 	end
+	def new
+		@product = Product.new
+	end
+
+	def create
+		@product = Product.new(products_params)
+		if @product.save
+			redirect_to pages_admin_path
+  			flash[:success] = "Produto criado"
+ 	 	else
+  			render action: :new
+
+  		end
+	end
+
+	def edit
+		@product = Product.find(params[:id])
+	end
+	def update
+      @product = Product.find(params[:id]) 
+      if @product.update_attributes(products_params)
+        redirect_to pages_admin_path
+        flash[:success] = "Produto Atualizado"
+      else
+        render action: :edit
+      end
+  	end
 
 	def condimentos
-		#@products = Product.where(:categories => 'condimentos')
-		@products = Product.joins(:categories).where(:categories => {:id => 2})
+		@products = Product.joins(:categories).where(:categories => {:name => "condimentos"})
 	end
 	def cafedamanha
-		#@products = Product.where(:categories => 'cafedamanha')
-		@products = Product.joins(:categories).where(:categories => {:id => 1})
+		@products = Product.joins(:categories).where(:categories => {:name => "cafedamanha"})
 	end
-	
+	def carros
+		@products = Product.joins(:categories).where(:categories => {:name => "carros"})
+	end
+
 	def get
 		#redirect_to products_search_path
 	end
 	
+	def findcategory
+		@products = Product.joins(:categories).where(:categories => {:name => params[:categoryname]})
+	end
 
 	def search
 		
@@ -37,5 +68,9 @@ class ProductsController < ApplicationController
 		def search_page
 			redirect_to products_search_path
 		end
+
+		def products_params
+  			params.require(:product).permit(:name, :description, :price)
+  		end
 
 end

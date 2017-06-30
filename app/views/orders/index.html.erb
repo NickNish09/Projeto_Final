@@ -1,20 +1,31 @@
 <h1>Pedidos Realizados</h1>
 <table class="table table-hover">
-     <thead >
+  <thead >
        <tr>
-         <th>Nome</th>
-         <th>Preço</th>
-         <th>Quantidade</th>
+         <th>Numero do Pedido</th>
+         <th>Numero do ID do Pedidor</th>
+         <th>Data de Entrega</th>
+         <th>Total</th>
+         <th>Status</th>
+         <th>Detalhes</th>
        </tr>
      </thead>
      <tbody>
-       <% @orders.each do |i| %>
-         <tr>
-           <td><%= i.id %></td>
-           <td><%= i.owner_id %></td>
-           <td></td>
-         </tr>
+    <% @orders.each do |x| %>
+      <tr>
+        <td><%= x.id %></td>
+        <td><%= x.owner_id %></td>
+        <td><%= x.deliverydate %></td>
+        <td>R$ <%= '%.2f'%(x.total) %></td>
+        <td><% if x.status == 0 %>
+          <input type="text" class="btn btn-warning" value="Em Processamento" style="text-align: center" readonly/>
+          <% else if x.status == 1 %>
+          <input type="text" class="btn btn-success" value="Entregue!" style="text-align: center" readonly/>
+          <% end %>
+          <% end %>
+        </td>
+        <td><%= link_to '<i class="glyphicon glyphicon-new-window"></i>'.html_safe,'/orders/details/'+ x.id.to_s, class: "btn btn-primary" %></td>
+      </tr>       
       <% end %>
-    </tbody>
+     </tbody>
 </table>
-

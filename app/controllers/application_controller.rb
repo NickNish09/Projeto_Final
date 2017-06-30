@@ -20,4 +20,8 @@ class ApplicationController < ActionController::Base
                 redirect_to users_path
             end
   end
+
+  def categories
+    categories = Category.all
+  end
 end

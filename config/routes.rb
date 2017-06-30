@@ -4,13 +4,17 @@ Rails.application.routes.draw do
   get 'pages/home'
   get 'pages/perfil'
   get 'pages/troll'
+  get 'pages/admin'
   get 'products/index'
   get 'products/condimentos'
   get 'products/cafedamanha'
+  get 'products/carros'
+  get 'products/findcategory'
   get 'products/addtocart'
   get 'products/search'
+  get 'products/new'
   get 'carrinho/show' => 'carrinho#show'
-  
+  resources :categories
   resources :products
   resources :orders
   get 'orders/details/:id' => 'orders#detail'
