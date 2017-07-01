@@ -17,12 +17,26 @@
         <td><%= x.owner_id %></td>
         <td><%= x.deliverydate %></td>
         <td>R$ <%= '%.2f'%(x.total) %></td>
-        <td><% if x.status == 0 %>
-          <input type="text" class="btn btn-warning" value="Em Processamento" style="text-align: center" readonly/>
-          <% else if x.status == 1 %>
-          <input type="text" class="btn btn-success" value="Entregue!" style="text-align: center" readonly/>
-          <% end %>
-          <% end %>
+        <td>
+          <div class="dropdown">
+            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+              <% if x.status == 0 %>
+                <%= 'Em processamento' %>
+              <% else if x.status == 1 %>
+                <%= 'Entregue!' %>
+                <% else %>
+                <%= 'Cancelado' %>
+              <% end %>
+              <% end %>
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                <li><%= link_to 'Entregue!',orders_alterstatus_path(id: x.id, status: 1),remote: true,method: "POST",class: "btn btn-success" %></li>
+                <li><%= link_to 'Em Processamento',orders_alterstatus_path(id: x.id, status: 0),remote: true, method: "POST",class: "btn btn-warning" %></li>
+                <li><%= link_to 'Cancelado',orders_alterstatus_path(id: x.id, status: 2),remote: true, method: "POST",class: "btn btn-danger" %></li>
+              
+            </ul>
+          </div>
         </td>
         <td><%= link_to '<i class="glyphicon glyphicon-new-window"></i>'.html_safe,'/orders/details/'+ x.id.to_s, class: "btn btn-primary" %></td>
       </tr>       

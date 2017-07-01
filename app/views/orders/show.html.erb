@@ -19,6 +19,8 @@
 					<input type="text" class="btn btn-warning disabled" value="Em Processamento" style="text-align: center" readonly/>
 					<% else if x.status == 1 %>
 					<input type="text" class="btn btn-success disabled" value="Entregue!" style="text-align: center" readonly/>
+					<% else %>
+					<input type="text" class="btn btn-danger disabled" value="Cancelado" style="text-align: center" readonly/>
 					<% end %>
 					<% end %>
 				</td>

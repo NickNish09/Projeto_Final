@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   resources :products
   resources :orders
   get 'orders/details/:id' => 'orders#detail'
+  post 'orders/alterstatus'
   get 'carts/limpar'
   get 'carts/addtocart'
   get 'carts/aumentarqtd'

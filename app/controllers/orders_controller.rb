@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
 	def index
-		@orders = Order.all
+		@orders = Order.all.order("id ASC")
 	end
 
 	def show
@@ -43,6 +43,12 @@ class OrdersController < ApplicationController
 		@products
 	end
 
+	def alterstatus
+		@order = Order.find(params[:id])
+		@order.status = (params[:status])
+		@order.save
+		redirect_to orders_path
+	end
 
 	private 
 	def order_params
