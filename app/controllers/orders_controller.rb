@@ -1,6 +1,10 @@
 class OrdersController < ApplicationController
 	def index
-		@orders = Order.all.order("id ASC")
+		if(params[:order] == nil)
+			@orders = Order.all.order("id ASC")
+		else	
+			@orders = Order.all.order("#{params[:order]} ASC")
+		end
 	end
 
 	def show

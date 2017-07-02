@@ -6,6 +6,7 @@
          <th>Data de Entrega</th>
          <th>Total</th>
          <th>Status</th>
+         <th>Atualizado em</th>
          <th>Detalhes</th>
        </tr>
      </thead>
@@ -24,6 +25,7 @@
 					<% end %>
 					<% end %>
 				</td>
+				<td><%= x.updated_at %></td>
 				<td><%= link_to '<i class="glyphicon glyphicon-new-window"></i>'.html_safe,'/orders/details/'+ x.id.to_s, class: "btn btn-primary" %></td>
 			</tr>     	
      	<% end %>

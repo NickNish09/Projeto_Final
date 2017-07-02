@@ -27,6 +27,7 @@
 
 <p>Total: R$ <%= '%.2f'%(@order.total) %></p>
 <% if current_user.admin? %>
+<p>Data do pedido: <%= @order.created_at %></p>
 <%= link_to 'Voltar',orders_path,class: "btn btn-primary" %>
 <% else %>
 <%= link_to 'Voltar',order_path(current_user) ,class: "btn btn-primary" %>
