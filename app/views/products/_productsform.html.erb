@@ -9,6 +9,17 @@
     <% end %>
   </ul>
 </div>
+<div class="dropdown">
+  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+    Ordenar
+    <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+    <li><%= link_to 'Preço Maior', products_path(order: "pricemaior") %></li>
+    <li><%= link_to 'Preço Menor', products_path(order: "price") %></li>
+    <li><%= link_to 'Nome', products_path(order: "name") %></li>
+  </ul>
+</div>
 <br>
 <table class="table table-hover">
      <thead >
@@ -16,6 +27,7 @@
          <th>Nome</th>
          <th>Preço</th>
          <th>Descrição</th>
+         <th>Adicionar ao Carrinho</th>
        </tr>
      </thead>
      <tbody>
@@ -27,7 +39,7 @@
            <td><% if logged_in? && current_user.admin? %>
                 <%= link_to 'Editar Produto',edit_product_path(product.id),class: "btn btn-primary" %>
                 <% else %>
-                <%= link_to 'Adicionar ao Carrinho',{:controller => "carts", :action => "addtocart",:product => product.id,:cart => current_cart,:quantity => 1},class: "btn btn-primary" %>
+                <%= link_to '<i class="glyphicon glyphicon-shopping-cart"></i>'.html_safe,{:controller => "carts", :action => "addtocart",:product => product.id,:cart => current_cart,:quantity => 1},class: "btn btn-primary" %>
                 <% end %>
                 </td>
          </tr>
