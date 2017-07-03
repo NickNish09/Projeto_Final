@@ -51,7 +51,7 @@ class OrdersController < ApplicationController
 		@order = Order.find(params[:id])
 		@order.status = (params[:status])
 		@order.save
-		redirect_to orders_path
+		redirect_to :back
 	end
 
 	private 
