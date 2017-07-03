@@ -1,4 +1,6 @@
 class OrdersController < ApplicationController
+	before_action :require_admin,only: [:index]
+
 	def index
 		if(params[:order] == nil)
 			@orders = Order.all.order("id ASC")
@@ -58,7 +60,12 @@ class OrdersController < ApplicationController
 	def order_params
   		params.require(:orders).permit(:owner_id)
   	end
-
+  	def require_admin
+  		if (!logged_in?) or (logged_in? and !current_user.admin?)
+  			flash[:danger] = "So admins podem fazer isso"
+  			redirect_to root_path
+  		end
+  	end
 	def addorders
 
 	end

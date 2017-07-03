@@ -1,4 +1,5 @@
-<div class="dropdown">
+
+<div class="dropdown" style="display:inline">
   <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
     Categorias
     <span class="caret"></span>
@@ -9,8 +10,8 @@
     <% end %>
   </ul>
 </div>
-<div class="dropdown">
-  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+<div class="dropdown" style="display:inline">
+  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
     Ordenar
     <span class="caret"></span>
   </button>
@@ -37,7 +38,7 @@
            <td>R$ <%= '%.2f'%(product.price) %></td>
             <td><%= product.description %></td>
            <td><% if logged_in? && current_user.admin? %>
-                <%= link_to 'Editar Produto',edit_product_path(product.id),class: "btn btn-primary" %>
+                <%= link_to '<i class="glyphicon glyphicon-edit"></i> Editar'.html_safe,edit_product_path(product.id),class: "btn btn-primary" %>
                 <% else %>
                 <%= link_to '<i class="glyphicon glyphicon-shopping-cart"></i>'.html_safe,{:controller => "carts", :action => "addtocart",:product => product.id,:cart => current_cart,:quantity => 1},class: "btn btn-primary" %>
                 <% end %>

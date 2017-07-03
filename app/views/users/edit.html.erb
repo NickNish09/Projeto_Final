@@ -3,5 +3,5 @@
 <br>
  <div class="list-group">
     <a><%= link_to "Edit", edit_user_path(current_user),class: "list-group-item list-group-item-action" %></a>
-    <a><%= link_to "Delete", @user, method: :delete,class: "list-group-item list-group-item-action"%></a>
+    <a><%= link_to "Delete", @user, method: :delete,data: {confirm: "Tem certeza que quer se deletar?"},class: "list-group-item list-group-item-action"%></a>
  </div>  

@@ -38,18 +38,18 @@
           </ul>
         </li>
       </ul>
-      <form class="navbar-form navbar-left">
-        <%= form_tag(products_search_path, :method => "GET",:html => {:id =>'form_id'}) do %>
+      
+        <%= form_tag(products_search_path, :method => "GET",:html => {:id =>'form_id'},class: "navbar-form navbar-left") do %>
 
         <div class="form-group">
-          <%= text_field_tag :search, params[:search], placeholder: "Procurar" %>
+          <%= text_field_tag :search, params[:search], placeholder: " Procurar um produto" %>
         </div>
           <%= button_tag(type: 'submit',name: nil, class: "btn btn-primary btn-sm") do %>
               <span class="glyphicon glyphicon-search"></span> 
           <% end %>
           
         <% end %>
-      </form>
+    
       <ul class="nav navbar-nav navbar-right">
         <% if logged_in? %>
           <li><%= link_to '<i class="glyphicon glyphicon-cog"></i> Opções'.html_safe,edit_user_path(current_user) %></li>

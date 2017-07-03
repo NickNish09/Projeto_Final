@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-	#before_action :search_page,only: [:search]
+	before_action :require_admin, only: [:new,:create, :edit,:update]
 
 	def show
 
@@ -81,5 +81,10 @@ class ProductsController < ApplicationController
 		def products_params
   			params.require(:product).permit(:name, :description, :price)
   		end
-
+  		def require_admin
+  			if (!logged_in?) or (logged_in? and !current_user.admin?)
+  				flash[:danger] = "So admins podem fazer isso"
+  				redirect_to root_path
+  			end
+  		end
 end
