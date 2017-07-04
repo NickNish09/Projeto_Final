@@ -1,5 +1,7 @@
 class OrdersController < ApplicationController
+	before_action :require_current_user,only: [:show]
 	before_action :require_admin,only: [:index]
+
 
 	def index
 		if(params[:order] == nil)
@@ -66,7 +68,10 @@ class OrdersController < ApplicationController
   			redirect_to root_path
   		end
   	end
-	def addorders
-
+	def require_current_user
+		if (!logged_in?) or (params[:id] != current_user.id.to_s) and !current_user.admin?
+			flash[:danger] = "Você só pode ver suas compras"
+  			redirect_to root_path
+  		end	
 	end
 end	

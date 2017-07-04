@@ -7,12 +7,12 @@
       
       <div class="form-group has-feedback">
         <%= f.label :email %><br />
-        <%= f.email_field :email, autofocus: true,class: "form-control",placeholder: "Email" %><i class="glyphicon glyphicon-user form-control-feedback"></i>
+        <%= f.email_field :email, autofocus: true,class: "form-control login-form-control",placeholder: "Email" %><i class="glyphicon glyphicon-user form-control-feedback"></i>
       </div>
      
       <div class="form-group has-feedback">
         <%= f.label :password %><br />
-        <%= f.password_field :password, autocomplete: "off",class: "form-control",placeholder: "Password" %><i class="glyphicon glyphicon-lock form-control-feedback"></i>
+        <%= f.password_field :password, autocomplete: "off",class: "form-control login-form-control",placeholder: "Password" %><i class="glyphicon glyphicon-lock form-control-feedback"></i>
       </div>
       <div class="actions">
         <%= f.submit "Log in" ,class: "log-btn"%>
