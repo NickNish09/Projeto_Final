@@ -1,21 +1,23 @@
+<h1 align="center">Login</h1>
 
-
-<h1>Login</h1>
 <br>
+<div class="login-form">
+
 <%= form_for :session, url: sign_in_path do |f| %>
     
     <div class="form-group">
       <%= f.label :email %><br />
-      <%= f.email_field :email, autofocus: true,class: "form-control",placeholder: "Email" %>
+      <%= f.email_field :email, autofocus: true,class: "form-control login-form-control",placeholder: "Email" %>
     </div>
    
     <div class="form-group">
       <%= f.label :password %><br />
-      <%= f.password_field :password, autocomplete: "off",class: "form-control",placeholder: "Password" %>
+      <%= f.password_field :password, autocomplete: "off",class: "form-control login-form-control",placeholder: "Password" %>
     </div>
     <div class="actions">
-      <%= f.submit "Log in" ,class: "btn btn-primary"%>
+      <%= f.submit "Log in" ,class: "log-btn"%>
     </div>
   <br>
   <p>Novo usuário? <%= link_to "Cadastre-se já!", new_user_path %></p>
   <% end %>
+</div>

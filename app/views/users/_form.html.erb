@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-md-12">
-  <div >
+  <div class="login-form">
   <%= form_for @user do |f| %>
               <% if @user.errors.any? %>
               <div id="error_explanation">
@@ -16,27 +16,27 @@
   <% end %>
               <div class="form-group">
                           <%= f.label :name %>
-                          <%= f.text_field :name,class: "form-control",placeholder: "Nome" %>
+                          <%= f.text_field :name,class: "form-control login-form-control",placeholder: "Nome" %>
               </div>
               
               <div class="form-group">
                           <%= f.label :email %>
-                          <%= f.email_field :email,class: "form-control",placeholder: "Email" %>
+                          <%= f.email_field :email,class: "form-control login-form-control",placeholder: "Email" %>
               </div>
               <div class="form-group">
                           <%= f.label :password %>
-                          <%= f.password_field :password,class: "form-control",placeholder: "Password" %>
+                          <%= f.password_field :password,class: "form-control login-form-control",placeholder: "Password" %>
               </div>
               <div class="form-group">
                           <%= f.label :password_confirmation %>
-                          <%= f.password_field :password_confirmation,class: "form-control",placeholder: "Password" %>
+                          <%= f.password_field :password_confirmation,class: "form-control login-form-control",placeholder: "Password" %>
               </div>
               <div class="form-group">
                           <%= f.label :address %>
-                          <%= f.text_field :address,class: "form-control",placeholder: "Endereço" %>
+                          <%= f.text_field :address,class: "form-control login-form-control",placeholder: "Endereço" %>
               </div>
               <div class="actions">
-                          <%= f.submit "Enviar",class: "btn btn-primary"%>
+                          <%= f.submit "Enviar",class: "log-btn"%>
               </div>
   <% end %>
   </div>
