@@ -21,8 +21,8 @@
     <li><%= link_to 'Nome', products_path(order: "name") %></li>
   </ul>
 </div>
-<br>
-<table class="table table-hover">
+<br><br>
+<!--<table class="table table-hover">
      <thead >
        <tr>
          <th>Nome</th>
@@ -34,6 +34,7 @@
      <tbody>
        <% @products.each do |product| %>
          <tr>
+
            <td><%= product.name %></td>
            <td>R$ <%= '%.2f'%(product.price) %></td>
             <td><%= product.description %></td>
@@ -46,5 +47,19 @@
          </tr>
       <%end%>
     </tbody>
- </table>
-
+ </table>-->
+<div class="container">
+  <% @products.each do |product| %>
+      <div class="product_square col-md-3">
+        <img src="http://worldartsme.com/images/shop-cart-icon-clipart-1.jpg" />
+        <h3><%= product.name %></h3>
+        <p><%= product.description %></p>
+        <div align="right">R$ <input type="text" class="fieldQty" value="<%= '%.2f'%(product.price) %>" style="text-align: center" size="6" readonly/></div>
+        <p><% if logged_in? && current_user.admin? %>
+                  <%= link_to '<i class="glyphicon glyphicon-edit"></i> Editar'.html_safe,edit_product_path(product.id),class: "btn btn-primary" %>
+                  <% else %>
+                  <%= link_to '<i class="glyphicon glyphicon-shopping-cart"></i>'.html_safe,{:controller => "carts", :action => "addtocart",:product => product.id,:cart => current_cart,:quantity => 1},class: "btn btn-primary" %>
+                  <% end %></p>
+      </div>         
+  <%end%>
+</div>

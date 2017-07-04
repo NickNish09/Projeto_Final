@@ -66,7 +66,7 @@
             <li><% if logged_in? %>
                 <%=link_to '<i class="glyphicon glyphicon-ok"></i> Finalizar Compra'.html_safe,orders_path(owner_id: current_user.id,status: 0,date: Date.today,items: current_cart),method: "POST" %>
                 <% else %>
-                <%= link_to 'Entre para Finalizar',sign_in_path %>
+                <%= link_to '<i class="glyphicon glyphicon-ok"></i> Entre para Finalizar'.html_safe,sign_in_path %>
                 <% end %> 
             </li>
             

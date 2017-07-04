@@ -1,19 +1,24 @@
-<h3>Login</h3>
-<br>
-<%= form_for :session, url: sign_in_path do |f| %>
-    
-    <div class="form-group">
-      <%= f.label :email %><br />
-      <%= f.email_field :email, autofocus: true,class: "form-control",placeholder: "Email" %>
-    </div>
-   
-    <div class="form-group">
-      <%= f.label :password %><br />
-      <%= f.password_field :password, autocomplete: "off",class: "form-control",placeholder: "Password" %>
-    </div>
-    <div class="actions">
-      <%= f.submit "Log in" ,class: "btn btn-primary"%>
-    </div>
+
+<div class="login-form">
+  <h3>Login</h3>
   <br>
-  <p>Novo usuário? <%= link_to "Cadastre-se já!", new_user_path %></p>
+
+  <%= form_for :session, url: sign_in_path do |f| %>
+      
+      <div class="form-group has-feedback">
+        <%= f.label :email %><br />
+        <%= f.email_field :email, autofocus: true,class: "form-control",placeholder: "Email" %><i class="glyphicon glyphicon-user form-control-feedback"></i>
+      </div>
+     
+      <div class="form-group has-feedback">
+        <%= f.label :password %><br />
+        <%= f.password_field :password, autocomplete: "off",class: "form-control",placeholder: "Password" %><i class="glyphicon glyphicon-lock form-control-feedback"></i>
+      </div>
+      <div class="actions">
+        <%= f.submit "Log in" ,class: "log-btn"%>
+      </div>
+    <br>
+    <p>Esqueceu a senha? <%= link_to 'Recuperar',"#" %></p>
+    <p>Novo usuário? <%= link_to "Cadastre-se já!", new_user_path %></p>
   <% end %>
+</div>

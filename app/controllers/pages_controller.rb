@@ -3,4 +3,5 @@ class PagesController < ApplicationController
   end
   def perfil
   end
+  
 end
