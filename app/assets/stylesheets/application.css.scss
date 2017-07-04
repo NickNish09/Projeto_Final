@@ -19,14 +19,30 @@
 
 .product_square{
 	margin: 10px;
-	border: 4px solid #121316;
+	width: 320px;
+	background-color: #e0dede;
+	border-radius: 200px;
+	//border: 4px solid #121316;
 }
 
 
 .product_square img{
-	margin: 10px;
+	margin: 15px;
 	width: 230px;
 	height: 230px;	
+}
+
+.product_square input{
+	border-radius: 5px;
+	border: solid 2px #3f3a3a;
+}
+.product_square input:hover{
+	font-weight: bold;
+	border: solid 2px #5e605f;
+}
+
+.product_square h3{
+	font-weight: bold;
 }
 
 .login_square{
