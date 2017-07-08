@@ -1,4 +1,7 @@
 <h1>Detalhes do pedido número <%= @order.id %></h1>
+<% if current_user.admin? %>
+<p>Usuário: <%= @user.name %></p>
+<% end %>
 <table>
 	
 	

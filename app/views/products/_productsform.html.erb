@@ -22,34 +22,28 @@
   </ul>
 </div>
 <br><br>
-<!--<table class="table table-hover">
-     <thead >
-       <tr>
-         <th>Nome</th>
-         <th>Preço</th>
-         <th>Descrição</th>
-         <th>Adicionar ao Carrinho</th>
-       </tr>
-     </thead>
-     <tbody>
-       <% @products.each do |product| %>
-         <tr>
 
-           <td><%= product.name %></td>
-           <td>R$ <%= '%.2f'%(product.price) %></td>
-            <td><%= product.description %></td>
-           <td><% if logged_in? && current_user.admin? %>
-                <%= link_to '<i class="glyphicon glyphicon-edit"></i> Editar'.html_safe,edit_product_path(product.id),class: "btn btn-primary" %>
-                <% else %>
-                <%= link_to '<i class="glyphicon glyphicon-shopping-cart"></i>'.html_safe,{:controller => "carts", :action => "addtocart",:product => product.id,:cart => current_cart,:quantity => 1},class: "btn btn-primary" %>
-                <% end %>
-                </td>
-         </tr>
-      <%end%>
-    </tbody>
- </table>-->
 <div class="container">
   <% @products.each do |product| %>
+    <% if logged_in? %>
+      <% if product.sellable? || current_user.admin? %>  
+      
+
+      <div class="product_square col-md-3">
+        <img src="http://worldartsme.com/images/shop-cart-icon-clipart-1.jpg" />
+        <h3><%= product.name %></h3>
+        <p><%= product.description %></p>
+        <div align="right"><strong>R$</strong> <input type="text" class="fieldQty" value="<%= '%.2f'%(product.price) %>" style="text-align: center" size="6" readonly/></div>
+        <% if current_user.admin? %>
+                  <p><%= link_to '<i class="glyphicon glyphicon-edit"></i> Editar'.html_safe,edit_product_path(product.id),class: "btn btn-primary" %></p>
+                  <p>Produto Vendível? <%= product.sellable.to_s.capitalize %></p>
+                  <% else %>
+                  <p><%= link_to '<i class="glyphicon glyphicon-shopping-cart"></i> Comprar'.html_safe,{:controller => "carts", :action => "addtocart",:product => product.id,:cart => current_cart,:quantity => 1},class: "btn btn-primary" %>
+                  <% end %></p>
+      </div>         
+      <% end %>
+    <% else %>
+      <% if product.sellable? %>
       <div class="product_square col-md-3">
         <img src="http://worldartsme.com/images/shop-cart-icon-clipart-1.jpg" />
         <h3><%= product.name %></h3>
@@ -61,5 +55,7 @@
                   <%= link_to '<i class="glyphicon glyphicon-shopping-cart"></i> Comprar'.html_safe,{:controller => "carts", :action => "addtocart",:product => product.id,:cart => current_cart,:quantity => 1},class: "btn btn-primary" %>
                   <% end %></p>
       </div>         
+      <% end %>
+    <% end %>
   <%end%>
 </div>

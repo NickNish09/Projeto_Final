@@ -1,6 +1,6 @@
 <h1>Carrinho</h1>
 
-
+<!--
 <table class="table table-hover">
      <thead >
        <tr>
@@ -28,12 +28,35 @@
          </tr>
       <%end%>
     </tbody>
-</table>
+</table>-->
+
+<div class="container">
+  
+  <% @products.each_with_index do |i,idx| %>
+    <div class="product_square col-md-3">
+    <img src="http://worldartsme.com/images/shop-cart-icon-clipart-1.jpg" />
+           <h3>  <%= i[:name] %></h3>
+           <p>Quantidade
+               <input type="text" id="fieldQt<%= i[:id]%>" class="fieldQty" value="<%= i[:quantity]%>" style="text-align: center" size="3" readonly/>
+            </p>
+           <div align="right">R$ <input type="text" id="priceQty<%= i[:id]%>" class="fieldQty" value="<%= i[:quantity] * i[:price]%>" style="text-align: center" size="6" readonly/>
+            </div>
+           
+            <p>
+               <%= link_to '<i class="glyphicon glyphicon-minus"></i>'.html_safe,carts_low_path(:product  => i[:id],qtd: i[:quantity],prc: i[:price],posicao: idx),remote: true,id: 'btnMinus'+i[:id].to_s,class: "btn btn-danger" %>
+               <%= link_to '<i class="glyphicon glyphicon-plus"></i>'.html_safe,carts_rise_path(:product  => i[:id],qtd: i[:quantity],prc: i[:price],posicao: idx),remote: true,id: 'btnPlus'+i[:id].to_s,class: "btn btn-success" %>
+            </p>
+           <p><%=link_to '<i class="glyphicon glyphicon-trash"></i>'.html_safe,{:controller => "carts", :action => "remove",:product => i[:id]},class: "btn btn-primary" %></p>
+           
+  </div>       
+      <%end%>
+  
+</div>
 
 <p>Total: R$<input type="text" size="6" id="total" class="fieldQty" value="<%= @total %>" style="text-align: center" size="2" readonly/></p>
 <%=link_to 'Esvaziar Carrinho',{:controller => "carts", :action => "destroy"},class: "btn btn-primary" %>
 <% if logged_in? %>
-<%=link_to 'Finalizar Compra',orders_path(owner_id: current_user.id,status: 0,date: Date.today,items: current_cart),method: "POST",data:{confirm: "Quer mesmo finalizar a compra?"}, class: "btn btn-primary" %>
+<%=link_to 'Finalizar Compra',orders_path(owner_id: current_user.id,status: 2,date: Date.today,items: current_cart),method: "POST",data:{confirm: "Quer mesmo finalizar a compra?"}, class: "btn btn-primary" %>
 <% else %>
 <%= link_to 'Entre para Finalizar',sign_in_path,class: "btn btn-primary" %>
 <% end %>

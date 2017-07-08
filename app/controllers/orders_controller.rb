@@ -9,11 +9,13 @@ class OrdersController < ApplicationController
 		else	
 			@orders = Order.all.order("#{params[:order]} ASC")
 		end
+		@status = Status.all
 	end
 
 	def show
 		@orders = Order.where(:owner_id => params[:id])
 		@user = User.find(current_user)
+
 	end
 	def new
 		@orders = Order.new
@@ -43,6 +45,8 @@ class OrdersController < ApplicationController
 
 	def detail
 		@order = Order.find(params[:id])
+		@user = User.find(@order.owner_id)
+		
 		@products = []
 		@order.items.each do |h|
 			pr = Product.find(h["product_id"])

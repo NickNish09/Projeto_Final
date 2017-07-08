@@ -79,7 +79,7 @@ class ProductsController < ApplicationController
 		end
 
 		def products_params
-  			params.require(:product).permit(:name, :description, :price)
+  			params.require(:product).permit(:name, :description, :price,:sellable)
   		end
   		def require_admin
   			if (!logged_in?) or (logged_in? and !current_user.admin?)

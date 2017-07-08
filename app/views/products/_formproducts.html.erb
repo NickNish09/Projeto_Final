@@ -29,6 +29,10 @@
                           <%= f.label :price %>
                           <%= f.number_field :price,class: "form-control",step: :any,min: 0,placeholder: "xx,yy" %>
               </div>
+              <div class="form-group">
+                          <%= f.label :sellable? %><br>
+                          <%= f.check_box :sellable,class: "form-check-in" %>
+              </div>
               <div class="actions">
                           <%= f.submit "Enviar",class: "btn btn-primary"%>
               </div>

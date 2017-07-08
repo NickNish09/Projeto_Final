@@ -29,16 +29,19 @@
         <td><%= x.owner_id %></td>
         <td><%= x.deliverydate %></td>
         <td>R$ <%= '%.2f'%(x.total) %></td>
-        <td>
-        <% if x.status == 0 %>
+        <td><% message = Status.find(x.status).name %>
+        <% if x.status == 1 %>
                 <% tatus = 'warning' %>
-                <% message = 'Em processamento' %>
-              <% else if x.status == 1 %>
-                  <% message = 'Entregue!' %>
+               
+              <% else if x.status == 2 %>
+               
                   <% tatus = 'success' %>
-                <% else %>
-                  <% message = 'Cancelado' %>
+                <% else if x.status == 3%>
+               
                   <% tatus = 'danger' %>
+                <% else %>
+                  <% tatus = 'primary' %>
+              <% end %>
               <% end %>
         <% end %>
           <div class="dropdown">
@@ -47,10 +50,23 @@
               <span class="caret"></span>
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                <li><%= link_to 'Entregue!',orders_alterstatus_path(id: x.id, status: 1),remote: true,method: "POST",class: "btn btn-success" %></li>
-                <li><%= link_to 'Em Processamento',orders_alterstatus_path(id: x.id, status: 0),remote: true, method: "POST",class: "btn btn-warning" %></li>
-                <li><%= link_to 'Cancelado',orders_alterstatus_path(id: x.id, status: 2),remote: true, method: "POST",class: "btn btn-danger" %></li>
-              
+                <% @status.each do |s| %>
+                  <% if s.id == 1 %>
+                    <% tatus = 'warning' %>
+                   
+                  <% else if s.id == 2 %>
+                   
+                      <% tatus = 'success' %>
+                    <% else if s.id==3 %>
+                   
+                      <% tatus = 'danger' %>
+                      <% else %>
+                        <% tatus = 'primary' %>
+                    <% end %>
+                    <% end %>
+                  <% end %>
+                  <li><%= link_to s.name,orders_alterstatus_path(id: x.id, status: s.id),remote: true,method: "POST",class: "btn btn-#{tatus}" %></li>
+                <% end %>
             </ul>
           </div>
         </td>
