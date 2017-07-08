@@ -64,7 +64,7 @@
           <ul class="dropdown-menu">
             <li><%= link_to '<i class="glyphicon glyphicon-shopping-cart"></i> Carrinho'.html_safe,carts_show_path%></li>
             <li><% if logged_in? %>
-                <%=link_to '<i class="glyphicon glyphicon-ok"></i> Finalizar Compra'.html_safe,orders_path(owner_id: current_user.id,status: 0,date: Date.today,items: current_cart),method: "POST" %>
+                <%=link_to '<i class="glyphicon glyphicon-ok"></i> Finalizar Compra'.html_safe,orders_path(owner_id: current_user.id,status: 2,date: Date.today,items: current_cart),method: "POST",data: {confirm: "Quer mesmo finalizar a compra?"} %>
                 <% else %>
                 <%= link_to '<i class="glyphicon glyphicon-ok"></i> Entre para Finalizar'.html_safe,sign_in_path %>
                 <% end %> 
