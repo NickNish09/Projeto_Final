@@ -25,6 +25,11 @@ class ProductsController < ApplicationController
 	def create
 		@product = Product.new(products_params)
 		if @product.save
+			params[:categorias].each do |cat|
+				catigo = Category.find_by(name: cat)
+				@protegory = Protegory.new(category_id: catigo.id,product_id: @product.id)
+				@protegory.save
+			end
 			redirect_to pages_admin_path
   			flash[:success] = "Produto criado"
  	 	else
