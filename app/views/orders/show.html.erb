@@ -20,8 +20,11 @@
 					<input type="text" class="btn btn-warning disabled" value="<%= Status.find(x.status).name %>" style="text-align: center" readonly/>
 					<% else if x.status == 2 %>
 					<input type="text" class="btn btn-success disabled" value="<%= Status.find(x.status).name %>" style="text-align: center" readonly/>
+					<% else if x.status == 3 %>
+						<input type="text" class="btn btn-danger disabled" value="<%= Status.find(x.status).name %>" style="text-align: center" readonly/>
 					<% else %>
-					<input type="text" class="btn btn-danger disabled" value="<%= Status.find(x.status).name %>" style="text-align: center" readonly/>
+						<input type="text" class="btn btn-primary disabled" value="<%= Status.find(x.status).name %>" style="text-align: center" readonly/>
+					<% end %>
 					<% end %>
 					<% end %>
 				</td>

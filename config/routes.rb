@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   resources :categories
   resources :products
   resources :orders
+
   get 'orders/details/:id' => 'orders#detail'
   post 'orders/alterstatus'
   get 'carts/limpar'
@@ -40,6 +41,6 @@ Rails.application.routes.draw do
 	get    'sign_in'   => 'sessions#new'
   post   'sign_in'   => 'sessions#create'
   delete 'sign_out'  => 'sessions#destroy'
-
+  resources :protegories, only: [:create, :destroy]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

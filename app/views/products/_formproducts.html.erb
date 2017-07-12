@@ -33,6 +33,23 @@
                           <%= f.label :sellable? %><br>
                           <%= f.check_box :sellable,class: "form-check-in" %>
               </div>
+              <div class="form-group">
+                          <%= f.label :categories %><br>  
+                          <% categories.each do |cat| %>
+                            <% botao = "danger" %>
+                            <% @product.categories.each do |ctg|%>
+                              <% if ctg.name == cat.name %>
+                                <% botao = "success" %>
+                              <% end %>
+                            <% end %>
+                          <% if botao == "danger" %>
+                            <%= link_to cat.name.capitalize,protegories_path(cat_id: cat.id,pro_id: @product.id),method: :post,remote: true,class: "btn btn-#{botao}" %>
+                          <% else %>
+                            <%= link_to cat.name.capitalize,protegory_path(cat_id: cat.id,pro_id: @product.id),method: :delete,remote: true,class: "btn btn-#{botao}" %>
+                          <% end %>
+                          <% end %>
+                      
+              </div>
               <div class="actions">
                           <%= f.submit "Enviar",class: "btn btn-primary"%>
               </div>
