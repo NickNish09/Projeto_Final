@@ -56,7 +56,7 @@
 <p>Total: R$<input type="text" size="6" id="total" class="fieldQty" value="<%= @total %>" style="text-align: center" size="2" readonly/></p>
 <%=link_to 'Esvaziar Carrinho',{:controller => "carts", :action => "destroy"},class: "btn btn-primary" %>
 <% if logged_in? %>
-<%=link_to 'Finalizar Compra',orders_path(owner_id: current_user.id,status: 2,date: Date.today,items: current_cart),method: "POST",data:{confirm: "Quer mesmo finalizar a compra?"}, class: "btn btn-primary" %>
+<%=link_to 'Finalizar Compra',orders_path(owner_id: current_user.id,status: 2,date: Date.today),method: "POST",data:{confirm: "Quer mesmo finalizar a compra?"}, class: "btn btn-primary" %>
 <% else %>
 <%= link_to 'Entre para Finalizar',sign_in_path,class: "btn btn-primary" %>
 <% end %>

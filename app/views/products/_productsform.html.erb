@@ -6,7 +6,7 @@
   </button>
   <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
     <% categories.each do |cat| %>
-        <li><%= link_to cat.name.capitalize,products_findcategory_path(categoryname: cat.name) %></li>
+        <li><%= link_to cat.name.capitalize,products_findcategory_path(categoryname: cat.name) %></li>  
     <% end %>
   </ul>
 </div>
@@ -16,9 +16,9 @@
     <span class="caret"></span>
   </button>
   <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-    <li><%= link_to 'Preço Maior', products_path(order: "pricemaior") %></li>
-    <li><%= link_to 'Preço Menor', products_path(order: "price") %></li>
-    <li><%= link_to 'Nome', products_path(order: "name") %></li>
+    <li><%= link_to 'Preço Maior', products_findcategory_path(order: "pricemaior",categoryname: params[:categoryname]) %></li>
+    <li><%= link_to 'Preço Menor', products_findcategory_path(order: "price",categoryname: params[:categoryname]) %></li>
+    <li><%= link_to 'Nome', products_findcategory_path(order: "name",categoryname: params[:categoryname]) %></li>
   </ul>
 </div>
 <br><br>

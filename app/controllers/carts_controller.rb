@@ -38,7 +38,9 @@ class CartsController < ApplicationController
 		@product = Product.find(params[:product])
 		current_cart.map do |h|
 		 	if h["product_id"] == @product.id
-		 		h["quantity"] -= 1
+		 		if h["quantity"] != 0
+		 			h["quantity"] -= 1
+		 		end
 		 	end
 		end
 		respond_to do |format|

@@ -34,7 +34,7 @@ class OrdersController < ApplicationController
 		@orders.total = @total
 		@orders.status = (params[:status])
 		@orders.deliverydate = (params[:date])
-		@orders.items = (params[:items])
+		@orders.items = current_cart
 		if @orders.save
 			flash[:success] = "Pedido Realizado!"
 	  		redirect_to order_path(current_user.id)

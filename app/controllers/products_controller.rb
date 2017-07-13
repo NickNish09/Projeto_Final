@@ -67,6 +67,17 @@ class ProductsController < ApplicationController
 	
 	def findcategory
 		@products = Product.joins(:categories).where(:categories => {:name => params[:categoryname]})
+		if(params[:order] == nil)
+			@products.order("id ASC")
+		else	
+			if params[:order] == 'pricemaior'
+				x = 'DESC'
+				params[:order] = 'price'
+			else
+				x = 'ASC'
+			end
+				@products = @products.order("#{params[:order]} "+x)
+		end
 	end
 
 	def search
